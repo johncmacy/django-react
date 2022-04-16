@@ -14,7 +14,7 @@ DEBUG = env('DEBUG')
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    '<APP_NAME>.herokuapp.com',
+    'django--react.herokuapp.com',
 ]
 
 INSTALLED_APPS = [
