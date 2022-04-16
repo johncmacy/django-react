@@ -11,10 +11,12 @@ SECRET_KEY = env('SECRET_KEY')
 
 DEBUG = env('DEBUG')
 
+HEROKU_APP_NAME = 'django-react'
+
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    'django--react.herokuapp.com',
+    f'{HEROKU_APP_NAME}.herokuapp.com',
 ]
 
 INSTALLED_APPS = [
