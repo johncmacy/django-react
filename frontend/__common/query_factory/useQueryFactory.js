@@ -13,7 +13,7 @@ export function useList({ resources, params, version = 'v1' }) {
     }
   )
 
-  const data = query.data?.pages?.map(({ results }) => results).flat()
+  const data = query.data?.pages?.map(({ results }) => results).flat() ?? []
 
   return { query, data }
 }
