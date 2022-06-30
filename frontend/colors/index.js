@@ -1,24 +1,21 @@
+
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import AppIndex from './AppIndex'
 import AppLayout from './AppLayout'
-import AddColor from './routes/AddColor'
-import EditColor from './routes/EditColor'
+import EventDetail from './event/EventDetail'
 
-ReactDOM.render(
-  <Router basename="colors">
+createRoot(
+  document.getElementById('root')
+).render(
+  <Router basename="core">
     <Routes>
       <Route path="" element={<AppLayout />}>
-        <Route index element={<AppIndex />} />
-
-        <Route path="add" element={<AddColor />} />
-
-        <Route path=":colorId">
-          <Route path="edit" element={<EditColor />} />
+        <Route path="" element={<AppIndex />}>
+          <Route path=":eventId" element={<EventDetail />} />
         </Route>
       </Route>
     </Routes>
-  </Router>,
-  document.getElementById('root')
+  </Router >
 )
