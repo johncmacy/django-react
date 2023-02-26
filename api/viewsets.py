@@ -17,16 +17,19 @@ class ProjectionsAndFilters(viewsets.ModelViewSet, QueriesDisabledViewMixin):
 
     def get_serializer_class(self, *args, **kwargs):
         if self.request.method == 'GET':
-            self.projection = self.request.query_params.get('projection', None)
-            if self.projection:
-                
-                # throw an error if an invalid projection is requested
-                if self.projection and self.projection not in self.serializers.for_.keys():
-                    raise InvalidProjectionError(f'Invalid projection: "{self.projection}"')
 
-                return self.serializers.for_[self.projection]
+            if self.request.query_params:
 
-        return super().get_serializer_class()
+                self.projection = self.request.query_params.get('projection', None)
+                if self.projection:
+                    
+                    # throw an error if an invalid projection is requested
+                    if self.projection and self.projection not in self.serializers.for_.keys():
+                        raise InvalidProjectionError(f'Invalid projection: "{self.projection}"')
+
+                    return self.serializers.for_[self.projection]
+
+        return self.serializers.for_.get(self.request.method, super().get_serializer_class())
 
     def get_queryset(self):
         q = super().get_queryset()

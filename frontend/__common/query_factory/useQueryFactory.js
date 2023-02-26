@@ -13,7 +13,7 @@ export function useList({ resources, params, version = 'v1' }) {
     }
   )
 
-  const data = query.data?.pages?.map(({ results }) => results).flat()
+  const data = query.data?.pages?.map(({ results }) => results).flat() ?? []
 
   return { query, data }
 }
@@ -27,7 +27,7 @@ export function useDetail({ resources, params, id, version = 'v1' }) {
 
   const query = useQuery(
     keys.detail(id),
-    () => axios.get(`/api/${version}/${resources}/${id}`, { params }).then(({ data }) => data),
+    () => axios.get(`/api/${version}/${resources}/${id}/`, { params }).then(({ data }) => data),
     { placeholderData }
   )
 
