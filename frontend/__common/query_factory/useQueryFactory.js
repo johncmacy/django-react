@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useInfiniteQuery, useQuery, useQueryClient } from "react-query"
+import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query"
 import useQueryKeyFactory from "./useQueryKeyFactory"
 
 export function useList({ resources, params, version = 'v1' }) {

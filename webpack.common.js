@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   entry: {
-    colors: './frontend/colors/index.js', // path to our input file
+    core: './frontend/core/index.js', // path to our input file
   },
   output: {
     filename: '[name].js',  // output bundle file name
